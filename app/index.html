@@ -3,121 +3,110 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GOLDEN MILE — GTA-style Cover Art Studio</title>
+<title>Golden Mile — GTA-style Cover Art Studio</title>
 <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<header class="topbar">
-  <div class="brand">
-    <span class="brand-mark">★</span>
-    <span class="brand-name">GOLDEN MILE</span>
-    <span class="brand-sub">cover art studio · Marina Keys</span>
-  </div>
-  <div class="top-actions">
-    <button id="btn-surprise" class="btn ghost" type="button">🎲 Surprise Me</button>
-    <button id="btn-undo" class="btn ghost" type="button" disabled>↩ Undo</button>
-    <button id="btn-redo" class="btn ghost" type="button" disabled>↪ Redo</button>
-    <button id="btn-export" class="btn primary" type="button">⬇ Export PNG</button>
-    <button id="btn-export-all" class="btn gold" type="button">Export all 3 sizes</button>
-  </div>
-</header>
+<main class="app" id="app">
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">★</span> GOLDEN MILE <span class="brand-sub">cover art studio · Marina Keys</span></div>
+    <div class="top-actions">
+      <button id="surprise" type="button" title="Random layout, grade and title">🎲 Surprise Me</button>
+      <button id="undo" type="button" disabled>↩ Undo</button>
+      <button id="redo" type="button" disabled>↪ Redo</button>
+      <label class="size-label">Size
+        <select id="export-size">
+          <option value="1080x1080" selected>1080 × 1080</option>
+          <option value="1080x1350">1080 × 1350</option>
+          <option value="1920x1080">1920 × 1080</option>
+        </select>
+      </label>
+      <button id="export" type="button" class="primary">⬇ Export PNG</button>
+      <button id="export-all" type="button" class="primary">⬇ Export all 3 sizes</button>
+    </div>
+  </header>
 
-<main class="studio">
   <aside class="rail" id="rail">
-    <section class="rail-block">
-      <h2>1 · Photos</h2>
-      <div class="photo-row">
-        <label class="btn small file-btn">＋ Add photos
-          <input id="file-input" type="file" accept="image/*" multiple hidden>
+    <section class="group">
+      <h2>Layout</h2>
+      <div class="chips" id="layout-chips"></div>
+    </section>
+
+    <section class="group">
+      <h2>Grade</h2>
+      <div class="chips" id="grade-chips"></div>
+      <div class="sliders">
+        <label>Paint strength <span id="strength-val">85%</span>
+          <input id="strength" type="range" min="0" max="100" value="85">
         </label>
-        <button id="btn-samples" class="btn small" type="button">Try sample photos</button>
-      </div>
-      <p class="note">Photos never leave your device — everything is drawn locally, nothing is uploaded.</p>
-      <div id="photo-strip" class="photo-strip" aria-label="Loaded photos"></div>
-      <div class="field">
-        <label for="sel-panel-photo">Photo in selected panel</label>
-        <select id="sel-panel-photo"></select>
-      </div>
-      <div class="field">
-        <label for="zoom-range">Zoom selected panel <span id="zoom-val">100%</span></label>
-        <input id="zoom-range" type="range" min="100" max="260" value="100">
-      </div>
-      <label class="check"><input id="chk-multicrop" type="checkbox"> One photo, many crops — fill every panel from one photo</label>
-    </section>
-
-    <section class="rail-block">
-      <h2>2 · Layout</h2>
-      <div id="layout-chips" class="chips"></div>
-    </section>
-
-    <section class="rail-block">
-      <h2>3 · Grade</h2>
-      <div id="grade-chips" class="chips"></div>
-      <div class="field">
-        <label for="paint-range">Paint strength <span id="paint-val">100%</span></label>
-        <input id="paint-range" type="range" min="0" max="100" value="100">
-      </div>
-      <div class="field">
-        <label for="halftone-range">Halftone dots <span id="halftone-val">0%</span></label>
-        <input id="halftone-range" type="range" min="0" max="100" value="0">
-      </div>
-      <div class="field">
-        <label for="grain-range">Film grain <span id="grain-val">25%</span></label>
-        <input id="grain-range" type="range" min="0" max="100" value="25">
-      </div>
-      <div class="field">
-        <label for="glow-range">Title glow <span id="glow-val">60%</span></label>
-        <input id="glow-range" type="range" min="0" max="100" value="60">
+        <label>Halftone / poster ink <span id="halftone-val">40%</span>
+          <input id="halftone" type="range" min="0" max="100" value="40">
+        </label>
+        <label>Grain <span id="grain-val">25%</span>
+          <input id="grain" type="range" min="0" max="100" value="25">
+        </label>
+        <label>Glow <span id="glow-val">50%</span>
+          <input id="glow" type="range" min="0" max="100" value="50">
+        </label>
       </div>
     </section>
 
-    <section class="rail-block">
-      <h2>4 · Words</h2>
-      <div class="field"><label for="in-title">Title (two words)</label>
-        <input id="in-title" type="text" value="GOLDEN MILE" maxlength="24"></div>
-      <div class="field"><label for="in-subtitle">Script subtitle</label>
-        <input id="in-subtitle" type="text" value="one last score" maxlength="40"></div>
-      <div class="field"><label for="in-kicker">Kicker</label>
-        <input id="in-kicker" type="text" value="WELCOME TO MARINA KEYS" maxlength="40"></div>
-      <div class="field"><label for="in-quote">Press quote</label>
-        <input id="in-quote" type="text" value="The sun never sets on a good score." maxlength="80"></div>
-      <div class="field"><label for="in-outlet">Quote outlet</label>
-        <input id="in-outlet" type="text" value="MARINA KEYS GAZETTE" maxlength="30"></div>
-      <div class="field"><label for="in-tagline">Tagline (three phrases)</label>
-        <input id="in-tagline" type="text" value="GOLD SUN · FAST CARS · ONE LAST SCORE" maxlength="80"></div>
-      <div class="field"><label>Title style</label>
-        <div id="title-chips" class="chips"></div></div>
+    <section class="group">
+      <h2>Words</h2>
+      <label class="field">Title
+        <input id="title" type="text" maxlength="24" value="GOLDEN MILE">
+      </label>
+      <label class="field">Subtitle (script)
+        <input id="subtitle" type="text" maxlength="48" value="one last ride at golden hour">
+      </label>
+      <label class="field">Press quote
+        <input id="quote" type="text" maxlength="80" value="Sun-soaked, salt-aired, impossible to put down">
+      </label>
+      <label class="field">Quote outlet
+        <input id="outlet" type="text" maxlength="32" value="The Keys Ledger">
+      </label>
+      <label class="field field-wide">Tagline
+        <textarea id="tagline" rows="2" maxlength="90">ONE LAST JOB • ONE GOLDEN MILE • NO WAY BACK</textarea>
+      </label>
+      <div class="field-row">
+        <span>Title style</span>
+        <div class="chips chips-small" id="title-style-chips"></div>
+      </div>
     </section>
 
-    <section class="rail-block">
-      <h2>5 · Poster furniture</h2>
-      <label class="check"><input id="chk-topbar" type="checkbox" checked> Top bar — stars, press quote, volume badge</label>
-      <label class="check"><input id="chk-roletags" type="checkbox" checked> Role tags on every panel</label>
-      <label class="check"><input id="chk-seal" type="checkbox" checked> Gold coin seal</label>
-      <label class="check"><input id="chk-wanted" type="checkbox" checked> “WANTED ★★★★★” badge</label>
-      <label class="check"><input id="chk-billing" type="checkbox" checked> Billing block + barcode + COMING SOON</label>
-      <label class="check"><input id="chk-sun" type="checkbox" checked> Retro striped sun in the title band</label>
+    <section class="group">
+      <h2>Photos</h2>
+      <div class="photo-actions">
+        <label class="btn-file">＋ Add photos
+          <input id="add-photos" type="file" accept="image/*" multiple hidden>
+        </label>
+        <button id="try-samples" type="button">Try sample photos</button>
+      </div>
+      <p class="note">Click a sample to put it in the selected panel. Drag a photo onto a panel, or drop a file from your computer.</p>
+      <div class="thumbs" id="thumbs"></div>
+      <p class="note">Selected panel: <strong id="selected-panel">Hero — THE DRIVER</strong></p>
+      <div class="panel-tools">
+        <label>Zoom <input id="panel-zoom" type="range" min="100" max="260" value="100"></label>
+        <button id="multi-crop" type="button" title="Fill every panel with a different crop of one photo">One photo, many crops</button>
+      </div>
     </section>
 
-    <section class="rail-block">
-      <h2>6 · Export size</h2>
-      <div id="size-chips" class="chips"></div>
-      <p class="note">Square 1080×1080 · Portrait 1080×1350 · Wide 1920×1080. Export re-renders at full resolution — never a screenshot of the preview.</p>
+    <section class="group">
+      <h2>Poster furniture</h2>
+      <div class="toggles" id="furniture-toggles"></div>
     </section>
+
+    <p class="privacy">🔒 Photos never leave your device. Everything runs offline, in this page.</p>
   </aside>
 
   <section class="stage">
-    <div class="stage-bar">
-      <span id="stage-label">Hero Centre · Golden Hour · 1080×1080</span>
-      <span id="stage-steps" class="steps">Photo → Panels → Words → PNG</span>
+    <div class="preview-wrap">
+      <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
     </div>
-    <div class="canvas-wrap" id="canvas-wrap">
-      <canvas id="preview" width="1080" height="1080"></canvas>
-      <div id="panel-hint" class="panel-hint">Click a panel to select · Drag to pan · Scroll to zoom · Drop a photo onto a panel</div>
-    </div>
+    <p class="hint">Click a panel to select · Drag to pan · Scroll to zoom · Drop a photo onto a panel</p>
+    <p id="status" role="status"></p>
   </section>
 </main>
-
 <script type="module" src="./src/main.js"></script>
 </body>
 </html>

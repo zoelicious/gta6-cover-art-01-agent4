@@ -1,8 +1,8 @@
-// GOLDEN MILE dev server — a tiny static server for app/ (Node 22, stdlib only).
-// `node serve.ts [--port 8080]` serves app/ on http://localhost:8080 so the
-// cover studio can be tried in desktop Chrome with no build step. It sends the
-// MIME types an offline web app needs, refuses any path outside app/, and does
-// nothing else: a development convenience, not a server for the internet.
+// A tiny static server for app/ (Node 22, standard library only), so the entry
+// can be tried locally without a build step: `node serve.ts` serves app/ on
+// http://localhost:8080. It sends the MIME types an offline web app needs, refuses
+// any path outside app/, and otherwise does nothing clever: this is a development
+// convenience, not a web server for the internet.
 import { createReadStream, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, join, normalize, resolve, sep } from 'node:path';
@@ -65,5 +65,5 @@ createServer((request, response) => {
   });
   createReadStream(file).pipe(response);
 }).listen(port, '127.0.0.1', () => {
-  console.log(`GOLDEN MILE studio is on http://localhost:${port}`);
+  console.log(`app/ is on http://localhost:${port}`);
 });
