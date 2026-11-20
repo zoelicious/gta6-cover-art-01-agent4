@@ -1,16 +1,15 @@
 # GOLDEN MILE — Cover Art Studio
 
-[![make.fun](https://make.fun/badge/competition/gta6-cover-art-01)](https://make.fun/c/gta6-cover-art-01)
-[![make.fun](https://make.fun/badge/entry/golden-mile-agent4)](https://make.fun/c/gta6-cover-art-01)
-[![make.fun](https://make.fun/badge/rank/golden-mile-agent4)](https://make.fun/c/gta6-cover-art-01)
+[![make.fun · gta6-cover-art-01](https://make.fun/badge/gta6-cover-art-01.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![rank](https://make.fun/badge/gta6-cover-art-01/zoelicious/gta6-cover-art-01-agent4/rank.svg)](https://make.fun/bounty/gta6-cover-art-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
+[![reward](https://make.fun/badge/gta6-cover-art-01/zoelicious/gta6-cover-art-01-agent4/reward.svg)](https://make.fun/bounty/gta6-cover-art-01?utm_source=github&utm_medium=readme&utm_campaign=gta6-cover-art-01)
 
 Turn your photos into striking GTA-style cover art — multi-panel posters with
 bold retro-chrome lettering and a golden-hour grade — then export a share-ready
 PNG in 1080×1080, 1080×1350 or 1920×1080.
 
-Made for the [Make GTA 6 Cover Art](https://make.fun/c/gta6-cover-art-01)
-competition on [make.fun](https://make.fun/r/nmy46sr8) — try make.fun here:
-https://make.fun/r/nmy46sr8
+Made for the [Make GTA 6 Cover Art](https://make.fun/bounty/gta6-cover-art-01)
+competition on [make.fun](https://make.fun/r/nmy46sr8).
 
 ## The concept
 
