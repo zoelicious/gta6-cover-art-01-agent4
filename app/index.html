@@ -1,112 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Golden Mile — GTA-style Cover Art Studio</title>
-<link rel="stylesheet" href="./style.css">
+<title>GOLDEN MILE — Cover Art Studio</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-<main class="app" id="app">
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark">★</span> GOLDEN MILE <span class="brand-sub">cover art studio · Marina Keys</span></div>
-    <div class="top-actions">
-      <button id="surprise" type="button" title="Random layout, grade and title">🎲 Surprise Me</button>
-      <button id="undo" type="button" disabled>↩ Undo</button>
-      <button id="redo" type="button" disabled>↪ Redo</button>
-      <label class="size-label">Size
-        <select id="export-size">
-          <option value="1080x1080" selected>1080 × 1080</option>
-          <option value="1080x1350">1080 × 1350</option>
-          <option value="1920x1080">1920 × 1080</option>
-        </select>
-      </label>
-      <button id="export" type="button" class="primary">⬇ Export PNG</button>
-      <button id="export-all" type="button" class="primary">⬇ Export all 3 sizes</button>
-    </div>
-  </header>
+<header class="topbar">
+  <div class="brand"><span class="brand-star">★</span> GOLDEN MILE <span class="brand-sub">COVER ART STUDIO · MARINA KEYS</span></div>
+  <div class="top-actions">
+    <button id="surprise" type="button" title="Random layout, grade and tagline">🎲 Surprise Me</button>
+    <button id="undo" type="button" disabled>↩ Undo</button>
+    <button id="redo" type="button" disabled>↪ Redo</button>
+    <label class="size-label" for="size-select">Size</label>
+    <select id="size-select">
+      <option value="1080x1080">1080 × 1080</option>
+      <option value="1080x1350">1080 × 1350</option>
+      <option value="1920x1080">1920 × 1080</option>
+    </select>
+    <button id="export" type="button" class="primary">⬇ Export PNG</button>
+    <button id="export-all" type="button" class="primary">⬇ Export all 3 sizes</button>
+  </div>
+</header>
 
-  <aside class="rail" id="rail">
-    <section class="group">
+<main class="layout">
+  <aside class="rail">
+    <section>
       <h2>Layout</h2>
-      <div class="chips" id="layout-chips"></div>
+      <div id="layout-chips" class="chips"></div>
     </section>
 
-    <section class="group">
+    <section>
       <h2>Grade</h2>
-      <div class="chips" id="grade-chips"></div>
-      <div class="sliders">
-        <label>Paint strength <span id="strength-val">85%</span>
-          <input id="strength" type="range" min="0" max="100" value="85">
-        </label>
-        <label>Halftone / poster ink <span id="halftone-val">40%</span>
-          <input id="halftone" type="range" min="0" max="100" value="40">
-        </label>
-        <label>Grain <span id="grain-val">25%</span>
-          <input id="grain" type="range" min="0" max="100" value="25">
-        </label>
-        <label>Glow <span id="glow-val">50%</span>
-          <input id="glow" type="range" min="0" max="100" value="50">
-        </label>
-      </div>
+      <div id="grade-chips" class="chips"></div>
+      <div class="slider-row"><label for="slider-paint">Paint strength</label><span id="slider-paint-val">85%</span></div>
+      <input id="slider-paint" type="range" min="0" max="100" value="85">
+      <div class="slider-row"><label for="slider-halftone">Halftone / poster ink</label><span id="slider-halftone-val">40%</span></div>
+      <input id="slider-halftone" type="range" min="0" max="100" value="40">
+      <div class="slider-row"><label for="slider-grain">Grain</label><span id="slider-grain-val">25%</span></div>
+      <input id="slider-grain" type="range" min="0" max="100" value="25">
+      <div class="slider-row"><label for="slider-glow">Glow</label><span id="slider-glow-val">50%</span></div>
+      <input id="slider-glow" type="range" min="0" max="100" value="50">
     </section>
 
-    <section class="group">
+    <section>
+      <h2>Title style</h2>
+      <div id="style-chips" class="chips"></div>
+    </section>
+
+    <section>
       <h2>Words</h2>
-      <label class="field">Title
-        <input id="title" type="text" maxlength="24" value="GOLDEN MILE">
-      </label>
-      <label class="field">Subtitle (script)
-        <input id="subtitle" type="text" maxlength="48" value="one last ride at golden hour">
-      </label>
-      <label class="field">Press quote
-        <input id="quote" type="text" maxlength="80" value="Sun-soaked, salt-aired, impossible to put down">
-      </label>
-      <label class="field">Quote outlet
-        <input id="outlet" type="text" maxlength="32" value="The Keys Ledger">
-      </label>
-      <label class="field field-wide">Tagline
-        <textarea id="tagline" rows="2" maxlength="90">ONE LAST JOB • ONE GOLDEN MILE • NO WAY BACK</textarea>
-      </label>
-      <div class="field-row">
-        <span>Title style</span>
-        <div class="chips chips-small" id="title-style-chips"></div>
-      </div>
+      <label class="field-label" for="title-input">Title</label>
+      <input id="title-input" type="text" value="GOLDEN MILE" maxlength="24">
+      <label class="field-label" for="subtitle-input">Subtitle (script)</label>
+      <input id="subtitle-input" type="text" value="one last ride at golden hour" maxlength="48">
+      <label class="field-label" for="quote-input">Press quote</label>
+      <input id="quote-input" type="text" value="Sun-soaked, salt-aired, impossible to put down" maxlength="80">
+      <label class="field-label" for="outlet-input">Quote outlet</label>
+      <input id="outlet-input" type="text" value="The Keys Ledger" maxlength="40">
+      <label class="field-label" for="tagline-input">Tagline</label>
+      <textarea id="tagline-input" rows="2" maxlength="90">ONE LAST JOB • ONE GOLDEN MILE • NO WAY BACK</textarea>
     </section>
 
-    <section class="group">
+    <section>
       <h2>Photos</h2>
-      <div class="photo-actions">
-        <label class="btn-file">＋ Add photos
-          <input id="add-photos" type="file" accept="image/*" multiple hidden>
-        </label>
+      <div class="photo-buttons">
+        <button id="add-photos" type="button">＋ Add photos</button>
         <button id="try-samples" type="button">Try sample photos</button>
       </div>
-      <p class="note">Click a sample to put it in the selected panel. Drag a photo onto a panel, or drop a file from your computer.</p>
-      <div class="thumbs" id="thumbs"></div>
-      <p class="note">Selected panel: <strong id="selected-panel">Hero — THE DRIVER</strong></p>
-      <div class="panel-tools">
-        <label>Zoom <input id="panel-zoom" type="range" min="100" max="260" value="100"></label>
-        <button id="multi-crop" type="button" title="Fill every panel with a different crop of one photo">One photo, many crops</button>
+      <input id="file-input" type="file" accept="image/*" multiple hidden>
+      <p class="note">Photos never leave your device. Click a photo below to put it on the selected panel.</p>
+      <div id="photo-strip" class="photo-strip"></div>
+      <div class="panel-controls">
+        <div class="slider-row"><span id="panel-label">Panel 1 — THE DRIVER</span><span id="panel-zoom-val">100%</span></div>
+        <input id="panel-zoom" type="range" min="100" max="400" value="100" aria-label="Zoom selected panel">
+        <div class="photo-buttons">
+          <button id="reset-crop" type="button">Reset crop</button>
+          <button id="one-photo" type="button">One photo, every panel</button>
+        </div>
       </div>
     </section>
 
-    <section class="group">
+    <section>
       <h2>Poster furniture</h2>
-      <div class="toggles" id="furniture-toggles"></div>
+      <div class="toggles">
+        <label><input id="f-stars" type="checkbox" checked> 5 gold stars</label>
+        <label><input id="f-quote" type="checkbox" checked> Press quote + outlet</label>
+        <label><input id="f-wanted" type="checkbox" checked> WANTED badge</label>
+        <label><input id="f-seal" type="checkbox" checked> Gold coin seal</label>
+        <label><input id="f-barcode" type="checkbox" checked> Barcode</label>
+        <label><input id="f-billing" type="checkbox" checked> Billing block</label>
+        <label><input id="f-tags" type="checkbox" checked> Role tags</label>
+        <label><input id="f-kicker" type="checkbox" checked> Kicker line</label>
+      </div>
     </section>
-
-    <p class="privacy">🔒 Photos never leave your device. Everything runs offline, in this page.</p>
   </aside>
 
   <section class="stage">
-    <div class="preview-wrap">
-      <canvas id="cover" width="1080" height="1080" aria-label="Live cover preview"></canvas>
+    <div class="canvas-wrap">
+      <canvas id="preview" width="860" height="860"></canvas>
     </div>
     <p class="hint">Click a panel to select · Drag to pan · Scroll to zoom · Drop a photo onto a panel</p>
-    <p id="status" role="status"></p>
+    <p class="steps"><strong>3 steps:</strong> 1 · pick photos &amp; layout &nbsp;→&nbsp; 2 · write your words &nbsp;→&nbsp; 3 · Export PNG in 1080×1080, 1080×1350 or 1920×1080.</p>
   </section>
 </main>
-<script type="module" src="./src/main.js"></script>
+
+<div id="toast" class="toast" role="status"></div>
+<script type="module" src="src/main.js"></script>
 </body>
 </html>
